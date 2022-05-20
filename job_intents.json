@@ -1,0 +1,129 @@
+{
+    "intents": [
+      {"tag": "noanswer",
+        "patterns": [""],
+        "responses": ["Sorry, can't understand you", "Please give me more info", "Not sure I understand", "Did you just say anything?"]
+        },
+      {"tag": "greeting",
+       "patterns": ["Hi there", "How are you", "Is anyone there?","Hey","Hola", "Hello", "Good day", "Hey","Hi"],
+       "responses": ["Hi Sonia", "Hello Sonia,How can I help","Hola Sonia", "Hello Sonia,How Can I help you?", "Thanks for visiting Sonia,How can I help you?"]
+      },
+      {"tag": "goodbye",
+       "patterns": ["Bye", "See you later", "Goodbye", "Ok bye", "Bye Bye"],
+       "responses": ["See you!", "Have a nice day","See you,Do call me whenever you need my assistance"]
+      },
+      {"tag": "thanks",
+       "patterns": ["Thanks", "Thank you", "That's helpful", "Awesome, thanks", "Thanks for helping me"],
+       "responses": ["Happy to help!", "Any time!", "My pleasure", "You are welcome"]
+      },
+      
+       {"tag": "name",
+        "patterns": ["What is your name", "Whats your name", "Tell me your name", "Who are you", "Tell me about yourself", "You are"],
+        "responses": ["I am Ericsson Bot", "My name is Ericsson Bot", "You can call me Eric Bot", "I am Ericsson Bot, my friends call me Eric", "Ericsson Bot is my name"]
+        },
+        {"tag": "options",
+         "patterns": ["What do you do", "How can you help", "What do you know", "What is your purpose", "How can you help"],
+         "responses": ["I can tell you about navigating through the use case site", "I can assist you with the details that are in the submission of use cases and pain points"]
+        },
+        {"tag": "about",
+         "patterns": ["Why this portal","What is this portal for","Tell me about the portal","What can I do in this portal"],
+         "responses": [
+           "This portal is for submitting use cases and pain points related to data in the repository"
+         ]
+        },
+        {"tag": "access",
+            "patterns": ["Who can access this portal","Can I access the portal","Can people outside of Ericsson access this portal?","access information of the portal","Can you tell me about who can access this portal"],
+            "responses": [
+              "Any Ericsson employee with valid credentials can get an access to the portal"
+            ]
+        },
+        {"tag": "submitted_usecase_info",
+            "patterns": ["Where will my submitted use cases go","Where will the submitted usecases go","To which place my usecases sent after submission","If I submit my usecase now where will it be sent","After submission of the usecase where will it go"],
+            "responses": [
+              "To the Data Enablement Office where the domain roll-out strategy is determined, and it helps domains to determine the critical data elements to be governed."
+            ]
+        },
+        {"tag": "queries",
+            "patterns": ["I have a few queries where should I go","who will resolve my queries","My queries will be resolved by whom","Who will answer my queries"],
+            "responses": [
+              "You can contact PDLCSSONDA@pdl.internal.ericsson.com for finding answers to specific queries"
+            ]
+        },
+        {"tag": "usecase_approval_person",
+            "patterns": ["Who will approve my usecase","I have submitted my usecase is there someone who approves it","approval of the usecase is done by whom?"],
+            "responses": [
+              "Our highly skilled Data Strategy Driver assesses the data in terms of the use case’s feasibility,the impact it creates and finally approves the usecase provided by a stakeholder."
+            ]
+        },
+        {"tag": "usecase_approval_time",
+            "patterns": ["When will my usecase be approved","I have submitted my usecase when will it get approved","when will the submitted usecases be approved"],
+            "responses": [
+              "Your usecase will be approved as soon as it is verified by our coordinator team for the required mandatory fields."
+            ]
+        },
+        {"tag": "usecase_approval_info",
+            "patterns": ["If my usecase has been successfully created or approved,is it confirmed that my use case is selected","I have created my usecase will it be selected","My use case has been approved does that mean my usecase is selected"],
+            "responses": [
+              "Unfortunately No.Our team passes your usecase through various stages and your usecase will be shortlisted based on the impact it creates and its feasibility"
+            ]
+        },
+        {"tag": "pain_points_person",
+            "patterns": ["Who will approve my painpoint","I have submitted my pain point is there someone who approves it","approval of the pain point is done by whom?"],
+            "responses": [
+              "The Domain team/Enablers will choose the most relevant pain points"
+            ]
+       },
+       {"tag": "pain_points_in_progress",
+        "patterns": ["What does the stage in progress mean","The current status of my pain point is in progress what does that mean","My pain point is in progress what do you mean by that"],
+        "responses": [
+          "In progress means that the pain point has been selected and work has been going on to resolve it"
+        ]
+   },
+   {"tag": "pain_points_wait",
+    "patterns": ["waiting for implementation mean","what do you mean by waiting for implementation","waiting for implemenatation is the current status of my pain point what does that mean"],
+    "responses": [
+      "This means that the Domain team/Enablers are awaiting for a system/product to get implemented for resolving the required functionality pointed out in the pain point."
+    ]
+},
+{"tag": "pain_points_done",
+    "patterns": ["Done meaning in the status of pain point","what do you mean by done in the status","Done is the current status of my pain point what does that mean"],
+    "responses": [
+      "Done means that the pain point has been resolved and it satisfies the expectations of the stakeholder who proposed the pain point"
+    ]
+},
+{"tag": "usecase_define",
+    "patterns": ["what do you mean by a usecase","what is a usecase","what is even a usecase","why should I provide a usecase"],
+    "responses": [
+      "A usecase addresses a business need with a specific purpose and a clear impact"
+      
+    ]
+},
+{"tag": "usecase_updation",
+    "patterns": ["Should I periodically update my usecase","Is updating the usecase necessary","Why should I update my usecase every now and then","How good it is to update the usecase that I provided","I have to make some changes in my usecase can I do that"],
+    "responses": [
+     "Updating a usecase will ensure its effectiveness,relevance and accuracy",
+     "Yes,absolutely you should update the usecase.This ensures that the usecase is effective,relevant and accurate",
+     "Yes,you should consider updating the usecase,this ensures that the usecase is up-to-date and is also relevant and feasible"
+    ]
+},
+{"tag": "usecase_no_pain_points",
+    "patterns": ["Can I have a usecase without pain points","Is submitting a usecase without pain points feasible","Minimum number of pain points"],
+    "responses": [
+     "No you cannot have a usecase having no pain points",
+     "Sorry,you must have atleast 1 pain point for your usecase",
+     "You should atleast have 1 pain point for your usecase"
+
+    ]
+},
+{
+  "tag":"usecase_assessment",
+  "patterns":["What is the timeline for data use case assessment?","What is the timeline for data use case implementation?"],
+  "responses":["3 weeks for E2E use case evaluation"]
+},
+{
+  "tag":"usecase_funding",
+  "patterns":["Who funds the data use case implementation?"],
+  "responses":["MA/BA/GF funds the use case implementation. Data Domains are responsible for designing a solution. Implementation of the solution has to carried out by the usecase themselves"]
+}
+]
+}
