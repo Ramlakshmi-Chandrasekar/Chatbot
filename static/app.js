@@ -141,6 +141,10 @@ function OnSend(){
         x = [...document.querySelectorAll(".question.load")].pop()
         x.parentNode.remove()
         x.remove();
+        timer=setTimeout(() => {
+            scrollable.insertAdjacentHTML('beforeend', `<div class="response-wrap"><div class="response load animate__animated animate__fadeInUp animate__fast"><span></span><span></span><span></span></div></div>`)
+            scrollToEnd(scrollable)
+        }, 600);
         fetch('/chatbot', {
             method: 'POST',
             headers: {
@@ -151,7 +155,9 @@ function OnSend(){
                 "query": userTxt.value
             })
         })
-        .then(res => res.json())
+        .then(res =>{ 
+            console.log(res);
+            return res.json()})
         .then(res => {
             if(res["response"]=="SERVER ERROR"){
                 setTimeout(() => {
@@ -164,23 +170,36 @@ function OnSend(){
             }
             else{
                 x = document.querySelector(".response.load")
-                x.classList.add("animate__fadeOutDown")
-                x.parentNode.remove()
+                if(x==null){
+                    clearTimeout(timer);
+                    console.log(timer);
+                }
+                else{
+                    x.classList.add("animate__fadeOutDown")
+                    x.parentNode.remove()
+                }
                 scrollable.insertAdjacentHTML('beforeend', `<div class="response-wrap">
         <div class="response animate__animated animate__fadeInUp animate__faster">
             ${res["response"]}<p class="time">${h}:${m}</p></div></div>`)
                 scrollToEnd(scrollable)
             }
-        });
+        })
+        .catch(()=>{
+            x = document.querySelector(".response.load")
+                if(x==null){
+                    clearTimeout(timer);
+                    console.log(timer);
+                }
+                else{
+                    x.classList.add("animate__fadeOutDown")
+                    x.parentNode.remove()
+                }
+        })
     var x = new Date()
     m = x.getMinutes();
     h = x.getHours();
     h = h < 10 ? "0" + h : h;
     m = m < 10 ? "0" + m : m;
-    setTimeout(() => {
-        scrollable.insertAdjacentHTML('beforeend', `<div class="response-wrap"><div class="response load animate__animated animate__fadeInUp animate__fast"><span></span><span></span><span></span></div></div>`)
-        scrollToEnd(scrollable)
-    }, 600);
     scrollable.insertAdjacentHTML('beforeend', `<div class="question-wrap">
     <div class="question animate__animated animate__fadeInUp animate__faster">
         ${userTxt.value}<p class="time">${h}:${m}</p></div></div>`)
