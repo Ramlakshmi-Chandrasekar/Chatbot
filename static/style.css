@@ -88,6 +88,9 @@
     justify-content: center;
 }
 
+[hideimage]{
+display: none;
+}
 .move-out .topbar2 {
     transition: 0.5s;
     animation: hideit 0.5s 0.7s forwards;
@@ -450,6 +453,7 @@ input {
     flex-grow: 1;
     padding: 0.5rem 1rem;
     border: none;
+    width: 0;
     font-size: 0.9rem;
     outline: none;
 }

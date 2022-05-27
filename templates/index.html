@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
@@ -15,17 +15,22 @@
 </head>
 
 <body>
+
+<!-- Preloading images for faster discovery and render -->
+<img hideimage src="{{url_for('static', filename='assets/logo.png')}}">
+<img hideimage src="{{ url_for('static', filename='assets/bot.png')}}">
+
     <div class="pop animate__animated animate__fadeInUp animate__fast bot-button">
-        <img class="logo btn" src="assets/logo.png">
+        <img class="logo btn" src="{{url_for('static', filename='assets/logo.png')}}">
         <div class="window hide">
             <div class="topbar">
-                <img class="logo" src="assets/logo.png">
+                <img class="logo" src="{{ url_for('static', filename='assets/logo.png') }}">
                 <h1 class="hide bot-name">
                     ChatBot
                 </h1>
             </div>
             <div class="middle">
-                <img class="bot-full-image" src="assets/bot.png">
+                <img class="bot-full-image" src="{{ url_for('static', filename='assets/bot.png') }}">
                 <div class="text">
                     <h1>Having Trouble?</h1>
                     <p>
@@ -37,7 +42,7 @@
         </div>
         <div class="window window2 hide">
             <div class="topbar topbar2">
-                <img class="logo" src="assets/logo.png">
+                <img class="logo" src="{{ url_for('static', filename='assets/logo.png') }}">
                 <h1 class="hide bot-name">
                     ChatBot
                 </h1>
@@ -75,6 +80,7 @@
             </div>
         </div>
     </div>
-    <script src="app.js"></script>
+    <script src="{{url_for('static', filename='app.js')}}"></script>
 </body>
+
 </html>

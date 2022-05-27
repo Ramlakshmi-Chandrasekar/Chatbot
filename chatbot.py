@@ -2,6 +2,7 @@ import nltk
 import tensorflow as tf
 nltk.download('punkt')
 nltk.download('wordnet')
+nltk.download('omw-1.4')
 from tensorflow.keras.layers import LSTM
 from nltk.stem import WordNetLemmatizer
 lemmatizer = WordNetLemmatizer()
@@ -19,7 +20,7 @@ words=[]
 classes = []
 documents = []
 ignore_words = ['?', '!']
-data_file = open('job_intents.json', encoding='utf-8').read()
+data_file = open('intents.json', encoding='utf-8').read()
 intents = json.loads(data_file)
 
 
@@ -169,7 +170,6 @@ model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy
 
 #fitting and saving the model
 hist = model.fit(np.array(train_x), np.array(train_y), epochs=200, verbose=1)
-#model.save('chatbot_model.h5', hist)
-model.save('lstm_model.h5')
+model.save('chatbot_model.h5', hist)
 
 print("model created")
