@@ -1,3 +1,25 @@
+$(function(){
+  if ('speechSynthesis' in window) {
+    speechSynthesis.onvoiceschanged = function() {
+      var $voicelist = $('#voices');
+
+      if($voicelist.find('option').length == 0) {
+        speechSynthesis.getVoices().forEach(function(voice, index) {
+          var $option = $('<option>')
+          .val(index)
+          .html(voice.name + (voice.default ? ' (default)' :''));
+
+          $voicelist.append($option);
+        });
+        
+        $voicelist.material_select();
+      }
+    }
+  } else {
+    alert("Voice Output is not supported in your Browser!");
+  }
+});
+
 const scrollable = document.querySelector('.scrollable'),
     botImg = document.querySelector(".btn"),
     goBtn = document.querySelector(".go-btn"),
@@ -34,12 +56,14 @@ userTxt.scrollLeft = userTxt.scrollWidth;
 })
 
 recognition.addEventListener('end',()=>{
+    window.speechSynthesis.resume();
     console.log("Stopped..");
     mikeWave.classList.remove("mike-active");
     recogStart=false;
 });
 
 mike.addEventListener("click",()=>{
+    window.speechSynthesis.pause();
     mikeWave.classList.add("mike-active");
     console.log("Listening...");
     if(!recogStart)
@@ -160,6 +184,9 @@ function OnSend(){
             return res.json()})
         .then(res => {
             if(res["response"]=="SERVER ERROR"){
+                synth.cancel();
+                window.speechSynthesis.cancel();
+                speakText("Error");
                 setTimeout(() => {
                     x = document.querySelector(".response.load")
                     x.classList.add("animate__fadeOutDown")
@@ -169,6 +196,8 @@ function OnSend(){
                 }, 600);
             }
             else{
+                window.speechSynthesis.cancel();
+                speakText(res["response"]);
                 x = document.querySelector(".response.load")
                 if(x==null){
                     clearTimeout(timer);
@@ -215,3 +244,20 @@ sendBtn.addEventListener("click",OnSend);
 function scrollToEnd(x, y = 0) {
     x.scrollTo(0, x.scrollHeight - y)
 }
+
+
+function speakText(text){
+    var msg = new SpeechSynthesisUtterance();
+    var voices = window.speechSynthesis.getVoices();
+    msg.voice = voices[$('#voices').val()];
+    msg.rate = 1;
+    msg.pitch = 1;
+    msg.text = text;
+    speechSynthesis.speak(msg);
+}
+
+window.addEventListener("keydown",(event)=>{
+    if(event.ctrlKey && (event.key == 'x')){  
+        speechSynthesis.cancel();
+    }
+})

@@ -16,10 +16,9 @@ def index():
 @app.route('/chatbot', methods=["GET","POST"])
 def chatbotResponse():
 
-    if request.method == 'POST':
-        the_question = request.get_json()
-        response = processor.chatbot_response(the_question["query"])
-        print(response)
+    the_question = request.get_json()
+    response = processor.chatbot_response(the_question["query"])
+    print(response)
     
     return jsonify({"response": response })
 

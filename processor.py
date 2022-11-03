@@ -1,4 +1,5 @@
 import nltk
+import random
 from nltk.stem import WordNetLemmatizer
 lemmatizer = WordNetLemmatizer()
 import pickle
@@ -50,6 +51,9 @@ def predict_class(sentence, model):
     return return_list
 
 def getResponse(ints, intents_json):
+    if(len(ints) ==0 ):
+        ans=["Sorry, can't understand you", "Please give me more info", "Not sure I understand", "Did you just say anything?"]
+        return random.choice(ans)
     tag = ints[0]['intent']
     list_of_intents = intents_json['intents']
     for i in list_of_intents:
